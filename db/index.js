@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url = process.env.MONGO_URI;
+const url = process.env.MONGO_URI.replace(/["']/g, "");
 mongoose.set("debug", (collectionName, method, query, doc) => {
   console.log(`${collectionName}.${method}`, JSON.stringify(query), doc);
 });
