@@ -4,7 +4,9 @@
   "description": "API with country and citites",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server-js"
+    "start": "node server",
+    "dev": "nodemon server"
+
   },
   "repository": {
     "type": "git",
@@ -39,12 +41,10 @@
     "moment": "^2.24.0",
     "mongodb": "^3.5.2",
     "mongoose": "^5.9.2",
-    "newrelic": "^6.13.1",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
     "npm": "^6.13.6",
     "request": "^2.88.2",
-    "soap": "^0.30.0",
     "swagger-jsdoc": "^3.5.0",
     "swagger-ui": "^3.25.0",
     "swagger-ui-express": "^4.1.3"
