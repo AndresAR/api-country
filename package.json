@@ -4,9 +4,8 @@
   "description": "API with country and citites",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "nodemon server",
     "dev": "nodemon server"
-
   },
   "repository": {
     "type": "git",
