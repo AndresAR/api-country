@@ -1,17 +1,36 @@
+const compression = require('compression');
 const express = require('express');
-const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
+const helmet = require('helmet');
+const cors = require('cors');
 require('dotenv').config()
 const db = require('./db')
 const v1route = require('./routes/v1/routes');
-
 const app = express();
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+const Mongoose = require('./db/index');
+global.mongo = new Mongoose();
+
+app.use(compression());
+app.use(helmet());
+app.use(cors());
+app.use(express.static('public'));
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json({ limit: '10mb' }));
 
 
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+        res.statusCode = 400;
+        res.json({ code: 400, message: 'Bad Request' });
+    }
+    if (err instanceof SyntaxError && err.status === 404 && 'body' in err) {
+        res.statusCode = 404;
+        res.json({ code: 404, message: 'Not found' });
+    }
+});
 
-app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({ extended: false }));
+app.use('/api/v1', v1route);
 const port = 3002;
 
 app.listen(port, () => console.log(`Server running... ${ port }`));

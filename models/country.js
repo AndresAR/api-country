@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-
-const Country = new Schema(
+let Country;
+const CountrySchema = new mongoose.Schema(
   {
     name: String,
     code: String,
@@ -21,7 +20,10 @@ const Country = new Schema(
   }
 );
 
+CountrySchema.statics.findByTag = function findByTag(tag) {
+  return Country.find(tag).exec();
+};
 
 
-
-module.exports = mongoose.model('countries', Country);
+Country = mongoose.model('countries', CountrySchema);
+module.exports = Country
