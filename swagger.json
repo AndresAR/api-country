@@ -13,7 +13,7 @@
   "basePath": "/api/v1",
   "tags": [
     {
-      "name": "Country v1",
+      "name": "Country",
       "description": "API for countries in the system"
     }
   ],
@@ -23,7 +23,7 @@
   "paths": {
     "/countries": {
       "get": {
-        "tags": ["Country v1"],
+        "tags": ["Country"],
         "summary": "Get all countries in system",
         "produces": ["application/json"],
         "responses": {
