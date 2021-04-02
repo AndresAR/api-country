@@ -33,8 +33,9 @@ app.use((err, req, res, next) => {
     }
 });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use('/api/v1', v1route);
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const port = 3002;
 
 app.listen(port, () => console.log(`Server running... ${ port }`));

@@ -68,6 +68,77 @@
           }
         }
       }
+    },
+    "/country": {
+      "get": {
+        "tags": ["Country"],
+        "summary": "Get country by param",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Country code [CL]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Country name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "capital",
+            "in": "query",
+            "description": "Country capital",
+            "required": false,
+            "type": "capial"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "One country by param",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "currency": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "symbol": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "language": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "_id": { "type": "string" },
+                "name": { "type": "string" },
+                "code": { "type": "string" },
+                "capital": { "type": "string" },
+                "region": { "type": "string" },
+                "flag": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
