@@ -8,7 +8,11 @@ const db = require('./db')
 const v1route = require('./routes/v1/routes');
 const app = express();
 const Mongoose = require('./db/index');
+const swaggerUi = require('swagger-ui-express');
+var global = {};
 global.mongo = new Mongoose();
+swaggerDocument = require('./swagger.json');
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(compression());
 app.use(helmet());
