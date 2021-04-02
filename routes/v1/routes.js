@@ -5,7 +5,7 @@ const CountryCtrl = require('../../controllers/Countries');
 
 // Country Routes 
 router.get('/countries', CountryCtrl.getCountries);
-
+router.get('/country', CountryCtrl.getCountry);
 
 
 

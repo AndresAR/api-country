@@ -12,7 +12,7 @@ const swaggerUi = require('swagger-ui-express');
 var global = {};
 global.mongo = new Mongoose();
 swaggerDocument = require('./swagger.json');
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.use(compression());
 app.use(helmet());
@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
     }
 });
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', v1route);
 const port = 3002;
 
