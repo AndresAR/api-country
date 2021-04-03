@@ -30,6 +30,21 @@ getCountries = async (req, res) => {
 
 getCountry = async (req, res) => {
     params = req.query
+    
+    if(params.name) {
+        params.name = params.name.toLowerCase();
+        params.name = params.name.charAt(0).toUpperCase() + params.name.slice(1)
+    }
+    
+    if(params.code) {
+        params.name = params.name.toUperCase();
+    }
+
+    if(params.capital) {
+        params.capital = params.capital.toLowerCase();
+        params.capital = params.capital.charAt(0).toUpperCase() + params.capital.slice(1)
+    }
+
     const country = await Country.findByTag(params);
     if (!country.length) {
         return res
