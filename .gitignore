@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 !/.circleci
+/.circleci
+.circleci
 
 # testing
 /coverage
