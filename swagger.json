@@ -15,6 +15,10 @@
     {
       "name": "Country",
       "description": "API for countries in the system"
+    },
+    {
+      "name": "Region",
+      "description": "API for regions in the system"
     }
   ],
   "schemes": ["https"],
@@ -134,6 +138,62 @@
                 "capital": { "type": "string" },
                 "region": { "type": "string" },
                 "flag": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "tags": ["Region"],
+        "summary": "Get all regions in system",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "List of all regions",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": { "type": "string" },
+                "name": { "type": "string" },
+                "code": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/region": {
+      "get": {
+        "tags": ["Region"],
+        "summary": "Get region by param",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Region code [SA]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Region name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "One region by param",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": { "type": "string" },
+                "name": { "type": "string" },
+                "code": { "type": "string" }
               }
             }
           }
