@@ -1,6 +1,7 @@
-FROM node:15.11.0
+FROM node
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-CMD ["npm", "start"]
+CMD node server.js
+EXPOSE 3000
