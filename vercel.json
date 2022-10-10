@@ -1,4 +1,10 @@
 {
-    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
-}
-  
+    "version": 2,
+    "name": "api-country",
+    "builds": [
+       { "src": "app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+       { "src": "/(.*)", "dest": "/server.js" }
+    ]
+ }
